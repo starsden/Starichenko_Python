@@ -10,7 +10,7 @@ while True:
         if a > 0:
             b = a + 20
         else:
-            b = a - 2
+            b = a - 5
         print(b)
 
         break

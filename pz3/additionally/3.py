@@ -6,7 +6,7 @@ while True:
     try:
         a = int(input("Введите число: "))
         if a % 2 == 0:
-            print(a // 2)
+            print(a // 4)
         else:
             print(a * 5)
 
