@@ -8,18 +8,23 @@
 
 dep = 1000.0
 end_dep = 1100.0
-p = float(input("Введите процент: "))
 
-if p <= 0 or p >= 25:
-    print("Процент должен быть в диапазоне от 0 до 25.")
-else:
-    pc = (p / 100)
-    m = 0
-    c_dep = dep
-    print(pc, c_dep)
+while True:
+    try:
+        p = float(input("Введите процент: "))
+        if p <= 0 or p >= 25:
+            print("Процент должен быть в диапазоне от 0 до 25.")
+        else:
+            pc = (p / 100)
+            m = 0
+            c_dep = dep
+            print(pc, c_dep)
 
-    while c_dep <= end_dep:
-        c_dep += dep * pc
-        m += 1
-        print(f"Количество месяцев: {m}")
-        print(f"Итоговый размер вклада: {c_dep} руб.")
+            while c_dep <= end_dep:
+                c_dep += dep * pc
+                m += 1
+                print(f"Количество месяцев: {m}")
+                print(f"Итоговый размер вклада: {c_dep} руб.")
+        break
+    except ValueError:
+        print("Введите процент!!!")
