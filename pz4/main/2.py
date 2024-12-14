@@ -28,3 +28,7 @@ while True:
         break
     except ValueError:
         print("Введите процент!!!")
+
+
+
+a
