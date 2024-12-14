@@ -4,14 +4,13 @@
 получится нуль?
 
 """
-def stps(a):
-    stps = 0
+
+num = int(input("Введите число "))
+def main(a):
+    steps = 0
     while a > 0:
-        a -= main(n)
-        stps += 1
-    return stps
+        a = a - sum(int(i) for i in str(a))
+        steps += 1
+    return steps
 
-
-a = int(input("Введите число: "))
-result = stps(a)
-print(f"Количество действий до нуля:", result)
+print(f"Количество операций:", main(num))
