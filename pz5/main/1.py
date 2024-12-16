@@ -6,8 +6,7 @@
 """
 while True:
     try:
-        num = int(input("Введите число "))
-
+        num = int(input("Введите число: "))
         def main(a):
             steps = 0
             while a > 0:
