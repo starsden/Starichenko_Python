@@ -10,7 +10,12 @@
 while True:
     try:
         def AddLeftDigit(D, K):
-            K = int(str(D) + str(K))
+            num = 0
+            temp = K
+            while temp > 0:
+                temp = temp // 10
+                num += 1
+            K = D * 10 ** num + K
             return K
 
         K = int(input("Введите число: "))
