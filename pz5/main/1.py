@@ -10,7 +10,12 @@ while True:
         def main(a):
             steps = 0
             while a > 0:
-                a = a - sum(int(i) for i in str(a))
+                summ = 0
+                temp = a
+                while temp > 0:
+                    summ += temp % 10
+                    temp = temp // 10
+                a = a - summ
                 steps += 1
             return steps
 
