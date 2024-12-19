@@ -10,15 +10,13 @@ R = √(x2 – x1)2 + (у2 – y1)2
 список для хранения абсцисс, второй — для хранения ординат.
 
 """
-
-
 from itertools import combinations
 import math
 
 def dist(x1, y1, x2, y2):
     return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
-def minimum(x, y):
+def min(x, y):
     n = len(x)
     if n < 3:
         return "минимум 3 точки"
@@ -48,6 +46,6 @@ def minimum(x, y):
 x = [0, 0, 1, 2, 3]
 y = [0, 2, 1, 1, 0]
 
-result = minimum(x, y)
+result = min(x, y)
 print("Минимальный периметр:", result[0])
 print("Точки треугольника:", result[1])
