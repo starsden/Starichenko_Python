@@ -9,7 +9,9 @@ def loo2(name, age):
 loo2(name = input("введи имя "), age = int(input("сколько лет? ")))
 """
 
-def loo3(a, b):
-    return a + b
+# def loo3(a, b):
+#     return a + b
+#
+# print("Сумма чисел: ", loo3(a = int(input("1 число: ")), b = int(input("второе число: "))))
 
-print("Сумма чисел: ", loo3(a = int(input("1 число: ")), b = int(input("второе число: "))))
+
