@@ -1,13 +1,41 @@
-"""
-C начала суток прошло N секунд (N — целое). Найти количество полных минут, прошедших
-с начала последнего часа.
-"""
+num = 10119
+temp = num
+digits = []
 
-while True:
-    try:
-        n = int(input("Введите количество секунд с начала суток: "))
-        minuti = (n % 3600) // 60
-        print("Количество полных минут с начала последнего часа:", minuti)
-        break
-    except ValueError:
-        print("Неверное значение")
+while temp > 0:
+    digits.append(temp % 10)
+    temp //= 10
+digits.reverse()
+print(digits)
+
+for d in digits:
+    print(d * d)
+
+
+
+numbers = [2, 3, 10, 5]
+result = 0
+for n in numbers:
+    sq = n * n
+    temp = sq
+    digits = []
+    if temp == 0:
+        digits.append(0)
+    while temp > 0:
+        digits.append(temp % 10)
+        temp //= 10
+    for d in reversed(digits):
+        result = result * 10 + d
+print(result)
+
+
+
+
+
+numbers = [2, 12, 22, 32, 42, 52, 62, 102, 112, 122, 132]
+count = 0
+for n in numbers:
+    if n % 4 == 0 and n % 10 == 2:
+        count += 1
+
+print("Чисел, кратных 4 и оканчивающихся на 2:", count)

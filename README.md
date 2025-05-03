@@ -5,6 +5,8 @@
 4. [PZ4](pz4/main)
 5. [PZ5](pz5/main)
 6. [PZ6](pz6)
+7. [PZ7](pz7)
+8. [PZ9](pz9)
 
 
 * ##### [reports](/reports)
