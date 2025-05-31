@@ -1,64 +1,68 @@
-import sqlite3
+import sqlite3 as sq
 
-DB_NAME = 'internet_store.db'
+with sq.connect('store.db') as con:
+    cur = con.cursor()
+    cur.execute("""CREATE TABLE IF NOT EXISTS sales
+                (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                fio TEXT NOT NULL,
+                tovar TEXT NOT NULL,
+                unit VARCHAR(10) NOT NULL,
+                quantity INTEGER NOT NULL,
+                price INTEGER NOT NULL);""")
 
-def init_db(db_name=DB_NAME):
-    conn = sqlite3.connect(db_name)
-    cursor = conn.cursor()
-    # Создаем таблицу Продажи, если она не существует
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS Продажи (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            fio TEXT NOT NULL,
-            товар TEXT NOT NULL,
-            единица_измерения TEXT NOT NULL CHECK(единица_измерения IN ('штуки', 'килограммы', 'литры')),
-            количество REAL NOT NULL CHECK(количество > 0),
-            стоимость REAL NOT NULL CHECK(стоимость >= 0)
-        );
-    ''')
-    conn.commit()
-    conn.close()
+    data = [
+        ['Стариченко Денис Евгеньевич', 'Шаурма с курицей', 'штука', 1, 200],
+        ['Кяк Денис Евгеньевич', 'Шаурма с говядиной', 'штука', 1, 250],
+        ['Бам Денис Евгеньевич', 'Шаурма с ягнятиной', 'штука', 1, 300],
+        ['Бим Денис Евгеньевич', 'Шаурма с щукой', 'штука', 1, 500],
+        ['Бум Денис Евгеньевич', 'Шаурма со свининой', 'штука', 1, 250],
+        ['Ким Денис Евгеньевич', 'Шаурма с телятиной', 'штука', 1, 290],
+        ['Как Денис Евгеньевич', 'Шаурма с бараниной', 'штука', 1, 300]
+    ]
+    cur.executemany("INSERT INTO sales (fio, tovar, unit, quantity, price) VALUES (?, ?, ?, ?, ?)",data)
+    con.commit()
+
+    # поиск по id
+    cur.execute("SELECT fio, tovar, price FROM sales WHERE id = ?", (3,))
+    print(cur.fetchall())
+
+    # поиск по ФИО
+    cur.execute("SELECT * FROM sales WHERE fio = ?", ('Стариченко Денис Евгеньевич',))
+    print(cur.fetchall())
+
+    # поиск по товару
+    cur.execute("SELECT * FROM sales WHERE tovar = ?", ('Шаурма с курицей',))
+    print(cur.fetchall())
 
 
-def add_sale(fio, товар, единица, количество, стоимость, db_name=DB_NAME):
-    conn = sqlite3.connect(db_name)
-    cursor = conn.cursor()
-    cursor.execute(
-        '''
-        INSERT INTO Продажи (fio, товар, единица_измерения, количество, стоимость)
-        VALUES (?, ?, ?, ?, ?);
-        ''',
-        (fio, товар, единица, количество, стоимость)
-    )
-    conn.commit()
-    conn.close()
 
-# Получение всех записей о продажах
 
-def get_all_sales(db_name=DB_NAME):
-    conn = sqlite3.connect(db_name)
-    cursor = conn.cursor()
-    cursor.execute('SELECT id, fio, товар, единица_измерения, количество, стоимость FROM Продажи;')
-    rows = cursor.fetchall()
-    conn.close()
-    return rows
+    # удаление по id
+    cur.execute("DELETE FROM sales WHERE id = ?", (1,))
+    print('удалил по id')
 
-# Пример использования
+    # удаление по количеству
+    cur.execute("DELETE FROM sales WHERE quantity = ?", (1,))
+    print('удалил по кол-ву')
 
-def main():
-    # Инициализируем БД и таблицу
-    init_db()
+    # удаление по цене меньше ???
+    cur.execute("DELETE FROM sales WHERE price < ?", (250,))
+    print('удалил по цене')
+    con.commit()
 
-    # Добавим несколько записей
-    add_sale('Иванов Иван Иванович', 'Яблоки', 'килограммы', 5.5, 330.0)
-    add_sale('Петров Петр Петрович', 'Бутылка воды', 'литры', 2, 60.0)
-    add_sale('Сидорова Анна Сергеевна', 'Батарейки', 'штуки', 10, 150.0)
 
-    # Выведем все продажи
-    sales = get_all_sales()
-    print("Все продажи:")
-    for sale in sales:
-        print(f"ID: {sale[0]}, ФИО: {sale[1]}, Товар: {sale[2]}, \"{sale[3]}\", Кол-во: {sale[4]}, Стоимость: {sale[5]}")
 
-if __name__ == '__main__':
-    main()
+
+
+    # обновить цену по id
+    cur.execute("UPDATE sales SET price = ? WHERE id = ?", (350, 2, ))
+    print('обновил цену')
+
+    # обновить количество по ФИО
+    cur.execute("UPDATE sales SET quantity = ? WHERE fio = ?",(2, 'Стариченко Денис Евгеньевич'))
+    print('обновил кол-во')
+
+    # увеличить цену на 50 для товаров с ценой ниже 300
+    cur.execute("UPDATE sales SET price = price + 50 WHERE price < ?", (300,))
+    print('увеличил цену')
+    con.commit()
