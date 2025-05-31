@@ -1,9 +1,10 @@
-a = list(input("Ваша карта: "))
+try:
+    file = open('exmple.txt', 'r')
+    a = file.read()
+    file.close()
 
-def maskify(a):
-    b = len(a) - 4
-    for i in range(b):
-        a[i] = '#'
-    return ''.join(a)
+    for strok in a.split('\n'):
+        print(strok)
 
-print(maskify(a))
+except FileNotFoundError:
+    print("Файла нет")
