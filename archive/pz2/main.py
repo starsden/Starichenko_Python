@@ -31,7 +31,6 @@ print(result)
 
 
 
-
 numbers = [2, 12, 22, 32, 42, 52, 62, 102, 112, 122, 132]
 count = 0
 for n in numbers:
