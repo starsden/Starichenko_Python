@@ -1,14 +1,12 @@
 """
-В последовательности их N чисел (N -четное) в первой ее половине найти
-произведение элементов меньших 0.
+Организовать и вывести последовательность из 20 целых чисел, выбрать не
+повторяющиеся элементы, найти их количество. Элементы больше 5 увеличить в два раза. Используй lambda
 """
-from functools import reduce
 
-n = int(input('введите четное число '))
-a = list(map(int, input('введите числа ').split()))
-b = []
-for i in a:
-    if i < 0:
-        b.append(i)
-print(b)
-print(reduce(lambda x, y: x * y, b))
+import random
+a = [random.randint(1, 10) for _ in range(20)]
+uni = list(set(a))
+
+print("Уникальные элементы:", uni)
+print("Количество уникальных элементов:", len(uni))
+print("Преобразованные элементы", list(map(lambda x: x * 2 if x > 5 else x, uni)))
