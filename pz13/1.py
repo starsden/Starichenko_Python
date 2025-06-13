@@ -5,9 +5,7 @@ import random
 cols = 3
 rows = 3
 matrix = [[random.randint(1, 10) for _ in range(cols)] for _ in range(rows)]
-
 print(matrix)
-
 
 def summ(matrix):
     total = 0
