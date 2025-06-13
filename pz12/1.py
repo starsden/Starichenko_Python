@@ -7,6 +7,6 @@ import random
 a = [random.randint(1, 10) for b in range(20)]
 uni = list(set(a))
 
-print("Уникальные элементы:", uni)
-print("Количество уникальных элементов:", len(uni))
-print("Преобразованные элементы", list(map(lambda x: x * 2 if x > 5 else x, uni)))
+print("уникальные элементы:", uni)
+print("кол-во уникальных элементов:", len(uni))
+print("преобразованные элементы", list(map(lambda x: x * 2 if x > 5 else x, uni)))
