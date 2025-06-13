@@ -9,7 +9,7 @@ matrix = [[random.randint(1, 10) for _ in range(cols)] for _ in range(rows)]
 print(matrix)
 
 def summ(a):
-    N = int(input("Введите номер строки: "))
+    N = int(input("введите номер строки: "))
     if 0 <= N < 4:
         norm = N - 1
         a[norm] = [x + 3 for x in a[norm]]
