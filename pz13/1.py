@@ -1,5 +1,5 @@
 '''
-В двумерном списке найти среднее арифметическое положительных элементов, кратных 3. Матрица должна генерироваться рандомно
+В двумерном списке найти среднее арифметическое положительных элементов, кратных 3. Матрица должна генерироваться рандомно. Используй lambda
 '''
 import random
 cols = 3
@@ -8,15 +8,15 @@ matrix = [[random.randint(1, 10) for _ in range(cols)] for _ in range(rows)]
 print(matrix)
 
 def summ(matrix):
-    total = 0
-    count = 0
+    mat = []
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
-            if matrix[i][j] > 0 and matrix[i][j] % 3 == 0:
-                total += matrix[i][j]
-                count += 1
+            mat.append(matrix[i][j])
 
-    result = total / count
+    ok = list(filter(lambda x: x > 0 and x % 3 == 0, mat))
+    if not ok:
+        return 0
+    result = sum(ok) / len(ok)
     return result
 
 print(summ(matrix))

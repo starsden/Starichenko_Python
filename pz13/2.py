@@ -1,5 +1,5 @@
 '''
-В двумерном списке элементы строки N (N задать с клавиатуры) увеличить на 3.
+В двумерном списке элементы строки N (N задать с клавиатуры) увеличить на 3. Используй lambda
 '''
 import random
 
@@ -12,7 +12,7 @@ def summ(a):
     N = int(input("введите номер строки: "))
     if 0 <= N < 4:
         norm = N - 1
-        a[norm] = [x + 3 for x in a[norm]]
+        a[norm] = list(map(lambda x: x + 3, a[norm]))
         for row in a:
             print(row)
         return a
