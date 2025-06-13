@@ -16,5 +16,6 @@ with sq.connect('clients.db') as con:
     cur.executemany("INSERT INTO clients (fio, percen, srok) VALUES (?, ?, ?)",data)
     con.commit()
 
-cur.execute("DELETE FROM clients WHERE id = ?", (2,))
+a = int(input('введите id '))
+cur.execute("DELETE FROM clients WHERE id = ?", (a,))
 con.commit()
