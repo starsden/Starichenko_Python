@@ -3,7 +3,9 @@
 повторяющиеся элементы, найти их количество. Элементы больше 5 увеличить в два раза.
 """
 import random
-uni = list(set([random.randint(1, 10) for b in range(20)]))
+
+a = [random.randint(1, 10) for b in range(20)]
+uni = list(set(a))
 
 print("Уникальные элементы:", uni)
 print("Количество уникальных элементов:", len(uni))
