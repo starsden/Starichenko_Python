@@ -1,18 +1,22 @@
 '''
 В двумерном списке элементы строки N (N задать с клавиатуры) увеличить на 3.
 '''
+import random
 
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
+cols = 3
+rows = 3
+matrix = [[random.randint(1, 10) for _ in range(cols)] for _ in range(rows)]
+print(matrix)
 
-N = int(input("введите номер строки "))
-if 0 <= N < len(matrix):
-    matrix[N] = [x + 3 for x in matrix[N]]
-    print("Изменённая матрица:")
-    for row in matrix:
-        print(row)
-else:
-    print("Некорректный номер строки")
+def summ(a):
+    N = int(input("Введите номер строки: "))
+    if 0 <= N < 4:
+        norm = N - 1
+        a[norm] = [x + 3 for x in a[norm]]
+        for row in a:
+            print(row)
+        return a
+    else:
+        return None
+
+summ(matrix)
