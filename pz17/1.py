@@ -1,56 +1,43 @@
-#Даны три целых числа. Найти количество положительных и
-# количество отрицательных чисел в исходном наборе.
+# Даны три словаря на три элемента каждый. Объединить все словари в один. Вывести исходные словари и результирующий.
 
-from tkinter import *
+import tkinter as tk
 
-def count_num(event):
-    t = 0
-    r: int = 0
-
-    n1 = int(num1.get())
-    n2 = int(num2.get())
-    n3 = int(num3.get())
-
-    t = t + 1 if n1 > 0 and n1 != 0 else t
-    t = t + 1 if n2 > 0 and n2 != 0 else t
-    t = t + 1 if n3 > 0 and n3 != 0 else t
-
-    r = r + 1 if n1 < 0 and n1 != 0 else r
-    r = r + 1 if n2 < 0 and n2 != 0 else r
-    r = r + 1 if n3 < 0 and n3 != 0 else r
-
-    positive['text'] = "Положительных", t
-    negative['text'] = "Отрицательных", r
-
-root = Tk()
-root.title("Поиск положительных и отрицательных чисел")
-root.geometry("300x200+200+200")
+slova = {
+    "apple": "яблоко",
+    "dog": "собака",
+    "sun": "солнце",
+    "water": "вода",
+    "book": "книга",
+    "house": "дом",
+    "friend": "друг",
+    "car": "машина",
+    "tree": "дерево",
+    "computer": "компьютер"
+}
 
 
-Label(text="Первое число").grid(row=1, column=0)
-num1 = Entry()
-num1.grid(row=1, column=1)
+def tl():
+    word = entry.get().lower()
+    translation = slova.get(word)
+    if translation:
+        res.config(text=f"перевод: {translation}")
+    else:
+        res.config(text="слова нет")
 
 
-Label(text="Второе число").grid(row=2, column=0)
-num2 = Entry()
-num2.grid(row=2, column=1)
+window = tk.Tk()
+window.title("27 вариант 9 работы")
 
-Label(text="Третье число").grid(row=3, column=0)
-num3 = Entry()
-num3.grid(row=3, column=1)
+label = tk.Label(window, text="введите английское слово:")
+label.pack()
 
-button1 = Button(text="Обработать")
-button1.grid(row=4, column=1)
+entry = tk.Entry(window)
+entry.pack()
 
-positive = Label()
-positive.grid(row=5, column=1)
+button = tk.Button(window, text="перевести", command=tl)
+button.pack()
 
-negative = Label()
-negative.grid(row=6, column=1)
+res = tk.Label(window, text="")
+res.pack()
 
-
-button1.bind('<Button-1>',count_num)
-
-
-root.mainloop()
+window.mainloop()
