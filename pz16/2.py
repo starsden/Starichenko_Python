@@ -11,12 +11,12 @@ class Person:
         self.gender = gender
 
     def info(self) -> None:
-        print(f"Имя: {self.name}\nВозраст: {self.age}\nПол: {self.gender}")
+        print(f"имя: {self.name}\nвозраст: {self.age}\nпол: {self.gender}")
 
 
 class Man(Person):
     def __init__(self, name: str, age: int):
-        super().__init__(name, age, gender="Мужской")
+        super().__init__(name, age, gender="мужской")
 
     def gend(self) -> None:
         print(f"{self.name} — мужчина.")
@@ -24,7 +24,7 @@ class Man(Person):
 
 class Woman(Person):
     def __init__(self, name: str, age: int):
-        super().__init__(name, age, gender="Женский")
+        super().__init__(name, age, gender="женский")
 
     def gend(self) -> None:
         print(f"{self.name} — женщина.")
@@ -32,11 +32,10 @@ class Woman(Person):
 
 
 ivan = Man("Иван", 30)
-print(dir(ivan), "\n")
 ivan.info()
 ivan.gend()
+print("\n")
 
 maria = Woman("Мария", 25)
-print(dir(maria), "\n")
 maria.info()
 maria.gend()
