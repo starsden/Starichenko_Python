@@ -2,7 +2,7 @@
 Добавьте методы для вычисления среднего балла и определения, является ли студент
 отличником.'''
 
-class student:
+class Student:
     name: str
     surname: str
     marks: list
@@ -18,7 +18,7 @@ class student:
     def fiver(self):
         return sum(self.marks) / len(self.marks) >= 4.5
 
-examp = student("Денис", "Стариченко", [5, 5, 5, 5])
+examp = Student("Денис", "Стариченко", [5, 5, 5, 5])
 print(examp.avg())
 print(examp.fiver())
 
