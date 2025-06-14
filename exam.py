@@ -12,10 +12,16 @@ def mult(a):
     N = int(input("введите номер строки: "))
     if 1 <= N < 4:
         norm = N - 1
+        summ = sum(a[norm])
         p = 1
-        for i in range(len(matrix[norm])):
-            p *= matrix[norm][i]
-        print(f"произведение: {p}")
+        res = 1
+        for i in range(len(a[norm])):
+
+            p = a[norm][i]
+            res = (lambda x, y: x * y)(p, res)
+
+        print(f"произведение: {res}")
+        print(f'сумма: {summ}')
     else:
         return None
 

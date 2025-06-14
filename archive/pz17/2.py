@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
 
-
 root = tk.Tk()
 root.title("Форма ввода адреса")
+root.geometry("400x425")
 
 main = ttk.Frame(root, padding="10")
 main.pack(fill=tk.BOTH, expand=True)
