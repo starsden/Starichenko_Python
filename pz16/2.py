@@ -4,7 +4,7 @@
 "Человек". Каждый класс должен иметь метод, который выводит информацию о поле объекта.
 '''
 
-class person:
+class Person:
     def __init__(self, name: str, age: int, gender: str):
         self.name = name
         self.age = age
@@ -14,7 +14,7 @@ class person:
         print(f"Имя: {self.name}\nВозраст: {self.age}\nПол: {self.gender}")
 
 
-class man(person):
+class Man(Person):
     def __init__(self, name: str, age: int):
         super().__init__(name, age, gender="Мужской")
 
@@ -22,7 +22,7 @@ class man(person):
         print(f"{self.name} — мужчина.")
 
 
-class woman(person):
+class Woman(Person):
     def __init__(self, name: str, age: int):
         super().__init__(name, age, gender="Женский")
 
@@ -31,12 +31,12 @@ class woman(person):
 
 
 
-ivan = man("Иван", 30)
+ivan = Man("Иван", 30)
 print(dir(ivan), "\n")
 ivan.info()
 ivan.gend()
 
-maria = woman("Мария", 25)
+maria = Woman("Мария", 25)
 print(dir(maria), "\n")
 maria.info()
 maria.gend()
